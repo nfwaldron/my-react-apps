@@ -1,8 +1,8 @@
 // import App from 'next/app'
-import * as React from 'react'
-import { CacheProvider } from '@emotion/react'
-import { cache } from '@emotion/css'
-import { globalStyles } from '../shared/styles'
+import React from "react";
+import { CacheProvider } from "@emotion/react";
+import { cache } from "@emotion/css";
+import { globalStyles } from "../shared/styles";
 
 // see: https://nextjs.org/docs/advanced-features/custom-app
 function MyApp({ Component, pageProps }) {
@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       {globalStyles}
       <Component {...pageProps} />
     </CacheProvider>
-  )
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for
@@ -26,4 +26,4 @@ function MyApp({ Component, pageProps }) {
 //   return { ...appProps }
 // }
 
-export default MyApp
+export default MyApp;

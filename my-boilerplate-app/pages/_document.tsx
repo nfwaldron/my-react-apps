@@ -1,11 +1,12 @@
-import Document, { Head, Main, NextScript } from 'next/document'
-import { extractCritical } from '@emotion/server'
+import React from "react";
+import Document, { Head, Main, NextScript } from "next/document";
+import { extractCritical } from "@emotion/server";
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
-    const page = renderPage()
-    const styles = extractCritical(page.html)
-    return { ...page, ...styles }
+    const page = renderPage();
+    const styles = extractCritical(page.html);
+    return { ...page, ...styles };
   }
 
   render() {
@@ -13,7 +14,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <style
-            data-emotion-css={this.props.ids.join(' ')}
+            data-emotion-css={this.props.ids.join(" ")}
             dangerouslySetInnerHTML={{ __html: this.props.css }}
           />
         </Head>
@@ -22,6 +23,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }

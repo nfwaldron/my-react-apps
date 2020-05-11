@@ -1,7 +1,8 @@
-import {ExampleComponent} from "components/example-component";
+import React from "react";
+import { ExampleComponent } from "components/example-component";
 
-const ExamplePage: React.FC = () => (
-    <ExampleComponent/>
-);
+const ExamplePage: React.FC = () => {
+  return <ExampleComponent />;
+};
 
 export default ExamplePage;
