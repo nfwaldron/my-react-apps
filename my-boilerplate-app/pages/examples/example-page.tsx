@@ -1,7 +1,7 @@
-import {ExampleComponent} from "components/example-component";
+import { ExampleComponent } from "components/example-component";
 
 const ExamplePage: React.FC = () => (
-    <ExampleComponent/>
+    <ExampleComponent />
 );
 
 export default ExamplePage;

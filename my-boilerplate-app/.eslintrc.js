@@ -42,11 +42,11 @@ module.exports = {
         "react/no-unescaped-entities": "off",
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
-        "max-len": [ "warn", { "code": 140 }],
+        "max-len": ["warn", { "code": 140 }],
         "no-console": "error",
         "no-undef": "off",
         "ordered-imports": "off",
-        "quotes": [ "warn", "double" ],
+        "quotes": ["warn", "double"],
         "sort-keys": "off"
     },
     "settings": {
