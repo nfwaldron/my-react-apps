@@ -1,5 +1,5 @@
 {
-  "name": "with-emotion-11",
+  "name": "my-boilerplate-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
   "keywords": [],
-  "author": "Thomas Greco",
+  "author": "Nathan Waldron",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.8.4",
