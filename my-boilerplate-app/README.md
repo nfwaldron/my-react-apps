@@ -1,42 +1,15 @@
-# Pass Server Data Directly to a Next.js Page during SSR
+## Getting started
 
-Extract and inline critical css with [@emotion/react](https://www.npmjs.com/package/@emotion/react) and [@emotion/styled](https://www.npmjs.com/package/@emotion/styled)
+In the root of the project install all of the dependencies.
 
-## Deploy your own
+`yarn install`
 
-Deploy the example using [Vercel](https://vercel.com):
+This project makes use of `yarn` workspaces. The install will install all package dependencies to the root.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/zeit/next.js/tree/canary/examples/with-emotion-11)
+You can now navigate to one of the apps, tasks, or services and start it usually with:
 
-## How to use
+`yarn dev`
 
-### Using `create-next-app`
+## my-boilerplate-app info
 
-Execute [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npm init next-app --example with-emotion-11 with-emotion-11-app
-# or
-yarn create next-app --example with-emotion-11 with-emotion-11-app
-```
-
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/master | tar -xz --strip=2 next.js-master/examples/with-emotion-11
-cd with-emotion-11
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+This is a Next.js project template that comes with Emotion-11, Typescript, Prettier, Babel and ESLint pre-configured. It's purpose is to allow users to quickly get up and running. Without having to struggle through the pain points of setting up the aforementioned packages etc.
