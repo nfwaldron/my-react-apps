@@ -26,12 +26,13 @@ export type GameBoardProps = {
   solvedCards: string[];
   onClick: (id: string) => void;
 };
+
 export const MemoryGameBoard: React.FC<GameBoardProps> = ({
   faceCards,
   flippedCards,
   disabled,
   solvedCards,
-  onClick,
+  onClick
 }) => {
   return (
     <GameBoard>
