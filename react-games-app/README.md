@@ -10,6 +10,6 @@ You can now navigate to one of the apps, tasks, or services and start it usually
 
 `yarn dev`
 
-## my-boilerplate-app info
+## react-games-app
 
-This is a Next.js project template that comes with Emotion-11, Typescript, Prettier, Babel and ESLint pre-configured. It's purpose is to allow users to quickly get up and running. Without having to struggle through the pain points of setting up the aforementioned packages etc.
+Personal site where I try and use React.js to code games. :-)

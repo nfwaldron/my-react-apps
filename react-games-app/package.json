@@ -27,6 +27,7 @@
     "emotion": "^10.0.27",
     "eslint-plugin-react": "^7.19.0",
     "next": "latest",
+    "next-images": "^1.4.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },
