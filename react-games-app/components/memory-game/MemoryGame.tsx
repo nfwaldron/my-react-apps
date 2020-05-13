@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import uuid from "uuid";
+import uuid from "react-uuid";
 import cloneDeep from "clone-deep";
 import { fetchCardsFromShuffledDeck } from "client/deck-of-cards";
 import { MemoryGameBoard } from "./MemoryGameBoard";
@@ -22,11 +22,11 @@ const generateCards = async (nbCards: number): Promise<FaceCard[]> => {
     const faceCards = cards
         .slice(0, nbCards / 2)
         .map((card: Card) => ({
-            cardId: uuid.v4(),
+            cardId: uuid(),
             cardFaceUrl: card.image,
             isFaceDown: true,
         }))
-      .flatMap((e: FaceCard) => [e, { ...cloneDeep(e), cardId: uuid.v4() }]);
+      .flatMap((e: FaceCard) => [e, { ...cloneDeep(e), cardId: uuid() }]);
 
 // TODO: This is an inefficient way to randomize the cards. Look into implementing Fisher Yates algorithm on the backend
 // the client is doing way too much heavy lifting at the moment
@@ -38,6 +38,7 @@ export type MemoryGameProps = {
 };
 
 export const MemoryGame: React.FC<MemoryGameProps> = ({ nbCards }) => {
+    
     const [cards, setCards] = useState<FaceCard[]>([]);
     const [flippedCards, setFlippedCards] = useState<string[]>([]);
     const [solvedCards, setSolvedCards] = useState<string[]>([]);
