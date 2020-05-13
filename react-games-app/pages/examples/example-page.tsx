@@ -1,13 +1,7 @@
-import { FaceCard } from "components/face-card";
-import { fetchCardsFromShuffledDeck } from "client/deck-of-cards"; 
-const ExamplePage: React.FC = () => {
-    
-    const result = fetchCardsFromShuffledDeck(52);
+import { MemoryGame } from "components/memory-game";
 
-    return (
-
-        <FaceCard cardId="1" isFaceDown cardFaceUrl="public/clubs_2.png" />
-    );
-};
+const ExamplePage: React.FC = () => (
+    <MemoryGame nbCards={8} />
+);
 
 export default ExamplePage;
