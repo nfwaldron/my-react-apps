@@ -3,6 +3,7 @@ import { fetchCardsFromShuffledDeck } from "client/deck-of-cards";
 const ExamplePage: React.FC = () => {
     
     const result = fetchCardsFromShuffledDeck(52);
+    console.log(result);
 
     return (
 

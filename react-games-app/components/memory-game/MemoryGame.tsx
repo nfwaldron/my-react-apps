@@ -4,30 +4,33 @@ import cloneDeep from "clone-deep";
 import { fetchCardsFromShuffledDeck } from "client/deck-of-cards";
 import { MemoryGameBoard } from "./MemoryGameBoard";
 import { FaceCardProps } from "components/face-card";
+import { Card } from "client/deck-of-cards/models";
 
 // TODO: Look into making more generic method to initialize cards for the future
 // This method is pretty specific to this particular game
 
 type FaceCard = Pick<FaceCardProps, "cardFaceUrl" | "cardId" | "isFaceDown">;
 
-const generateCards = (nbCards: number) => {
-    if (count % 2 !== 0) {
+// TODO: This should be refactored. There is way too much happening on the client. Look into setting up
+// a GQL server and requesting this data via the GQL API
+
+const generateCards = async (nbCards: number): Promise<FaceCard[]> => {
+    if (nbCards % 2 !== 0) {
         return null;
     }
+    const cards = await fetchCardsFromShuffledDeck(nbCards);
+    const faceCards = cards
+        .slice(0, nbCards / 2)
+        .map((card: Card) => ({
+            cardId: uuid.v4(),
+            cardFaceUrl: card.image,
+            isFaceDown: true,
+        }))
+      .flatMap((e: FaceCard) => [e, { ...cloneDeep(e), cardId: uuid.v4() }]);
 
-    const data = fetchCardsFromShuffledDeck(count);
-
-    //   const faceCards = 
-    //     .slice(0, count / 2)
-    //     .map((cardFaceImage: string) => ({
-    //       cardId: uuid.v4(),
-    //       cardFaceUrl: cardFaceImage,
-    //       isFaceDown: true,
-    //     }))
-    //     .flatMap((e: FaceCard) => [e, { ...cloneDeep(e), cardId: uuid.v4() }]);
-
-    //  return faceCards.sort(() => 0.5 - Math.random());
-
+// TODO: This is an inefficient way to randomize the cards. Look into implementing Fisher Yates algorithm on the backend
+// the client is doing way too much heavy lifting at the moment
+    return faceCards.sort(() => 0.5 - Math.random());
 };
 
 export type MemoryGameProps = {
@@ -42,8 +45,12 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ nbCards }) => {
     const [disabled, setDisabled] = useState(false);
 
     // TODO add restart game functionality
-    useEffect(() => {
-        setCards(generateCards(nbCards));
+    useEffect( () => {
+        const initializeDeck = async () => {
+            const result = await generateCards(nbCards);
+            setCards(result);
+        };
+        initializeDeck();
     }, []);
 
     const onClick = (id: string) => {
