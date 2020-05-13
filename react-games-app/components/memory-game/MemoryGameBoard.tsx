@@ -32,7 +32,7 @@ export const MemoryGameBoard: React.FC<GameBoardProps> = ({
   flippedCards,
   disabled,
   solvedCards,
-  onClick
+  onClick,
 }) => {
   return (
     <GameBoard>
