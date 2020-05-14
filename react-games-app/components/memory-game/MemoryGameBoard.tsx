@@ -42,7 +42,7 @@ export const MemoryGameBoard: React.FC<GameBoardProps> = ({
           onClick={() => onClick(card.cardId)}
           cardFaceUrl={card.cardFaceUrl}
           cardId={card.cardId}
-          isFaceDown={flippedCards.includes(card.cardId)}
+          isFaceUp={flippedCards.includes(card.cardId)}
           isDisabled={disabled || solvedCards.includes(card.cardId)}
           isSolved={solvedCards.includes(card.cardId)}
         />

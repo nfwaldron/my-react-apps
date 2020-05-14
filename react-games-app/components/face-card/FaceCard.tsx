@@ -17,14 +17,25 @@ const FaceCardContainer = styled.div({
   //border: "2px solid #bababa",
   "&:hover": {
     cursor: "pointer",
-    border: "2px solid #5e5e5e",
-    boxShadow: "0 0 10px rgba(#5e5e5e, .6)",
+    // border: "2px solid #5e5e5e",
+    // boxShadow: "0 0 10px rgba(#5e5e5e, .6)",
   },
 });
 
+const CardBack = styled.div({
+  position: "absolute",
+  borderRadius: radii.polished,
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  background: "linear-gradient(45deg, #1fa5ff 25%, #1053ff 25%, #1053ff 50%, #1fa5ff 50%, #1fa5ff 75%, #1053ff 75%, #1053ff 100%)",
+  backgroundSize: "56px 56px",
+})
+
 export type FaceCardProps = {
   cardId: string;
-  isFaceDown: boolean;
+  isFaceUp: boolean;
   cardFaceUrl: string;
   isDisabled?: boolean;
   isSolved?: boolean;
@@ -34,7 +45,7 @@ export type FaceCardProps = {
 export const FaceCard: React.FC<FaceCardProps> = ({
   cardId,
   isDisabled,
-  isFaceDown,
+  isFaceUp,
   cardFaceUrl,
   isSolved,
   onClick,
@@ -43,7 +54,7 @@ export const FaceCard: React.FC<FaceCardProps> = ({
     /// TODO: CSS animations for card flips
     <FaceCardContainer onClick={() => isDisabled || isSolved ? null : onClick(cardId)}>
       {
-        isFaceDown ? <Image
+        isFaceUp || isSolved ? <Image
           css={{
             width: "100%",
             top: 0,
@@ -53,15 +64,7 @@ export const FaceCard: React.FC<FaceCardProps> = ({
           }}
           src={cardFaceUrl}
         />
-          : <div css={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: "linear - gradient(45deg, #1fa5ff 25 %, #1053ff 25 %, #1053ff 50 %, #1fa5ff 50 %, #1fa5ff 75 %, #1053ff 75 %, #1053ff 100 %)",
-            backgroundSize: "56px 56px",
-          }}/>
+          : <CardBack/>
       }
     </FaceCardContainer >
   );

@@ -9,7 +9,7 @@ import { Card } from "client/deck-of-cards/models";
 // TODO: Look into making more generic method to initialize cards for the future
 // This method is pretty specific to this particular game
 
-type FaceCard = Pick<FaceCardProps, "cardFaceUrl" | "cardId" | "isFaceDown">;
+type FaceCard = Pick<FaceCardProps, "cardFaceUrl" | "cardId" | "isFaceUp">;
 
 // TODO: This should be refactored. There is way too much happening on the client. Look into setting up
 // a GQL server and requesting this data via the GQL API
@@ -24,12 +24,12 @@ const generateCards = async (nbCards: number): Promise<FaceCard[]> => {
         .map((card: Card) => ({
             cardId: uuid(),
             cardFaceUrl: card.image,
-            isFaceDown: true,
+            isFaceUp: true,
         }))
-      .flatMap((e: FaceCard) => [e, { ...cloneDeep(e), cardId: uuid() }]);
+        .flatMap((e: FaceCard) => [e, { ...cloneDeep(e), cardId: uuid() }]);
 
-// TODO: This is an inefficient way to randomize the cards. Look into implementing Fisher Yates algorithm on the backend
-// the client is doing way too much heavy lifting at the moment
+    // TODO: This is an inefficient way to randomize the cards. Look into implementing Fisher Yates algorithm on the backend
+    // the client is doing way too much heavy lifting at the moment
     return faceCards.sort(() => 0.5 - Math.random());
 };
 
@@ -38,7 +38,7 @@ export type MemoryGameProps = {
 };
 
 export const MemoryGame: React.FC<MemoryGameProps> = ({ nbCards }) => {
-    
+
     const [cards, setCards] = useState<FaceCard[]>([]);
     const [flippedCards, setFlippedCards] = useState<string[]>([]);
     const [solvedCards, setSolvedCards] = useState<string[]>([]);
@@ -46,7 +46,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ nbCards }) => {
     const [disabled, setDisabled] = useState(false);
 
     // TODO add restart game functionality
-    useEffect( () => {
+    useEffect(() => {
         const initializeDeck = async () => {
             const result = await generateCards(nbCards);
             setCards(result);
